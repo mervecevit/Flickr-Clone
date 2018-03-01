@@ -12,6 +12,9 @@
 		F260FC30204855A900C7941A /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260FC2F204855A900C7941A /* TimelineViewController.swift */; };
 		F260FC35204855A900C7941A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F260FC34204855A900C7941A /* Assets.xcassets */; };
 		F260FC38204855A900C7941A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F260FC36204855A900C7941A /* LaunchScreen.storyboard */; };
+		F260FC42204894ED00C7941A /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260FC41204894ED00C7941A /* Photo.swift */; };
+		F260FC4420489BBD00C7941A /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260FC4320489BBD00C7941A /* Photos.swift */; };
+		F260FC4620489CD500C7941A /* RecentPhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260FC4520489CD500C7941A /* RecentPhotoResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		F260FC34204855A900C7941A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F260FC37204855A900C7941A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F260FC39204855A900C7941A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F260FC41204894ED00C7941A /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		F260FC4320489BBD00C7941A /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		F260FC4520489CD500C7941A /* RecentPhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentPhotoResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,13 +73,40 @@
 		F260FC2C204855A900C7941A /* FlickrClone */ = {
 			isa = PBXGroup;
 			children = (
+				F260FC4820489DBA00C7941A /* Model */,
+				F260FC492048AA2E00C7941A /* View */,
+				F260FC4A2048AA5400C7941A /* Controller */,
 				F260FC2D204855A900C7941A /* AppDelegate.swift */,
-				F260FC2F204855A900C7941A /* TimelineViewController.swift */,
 				F260FC34204855A900C7941A /* Assets.xcassets */,
 				F260FC36204855A900C7941A /* LaunchScreen.storyboard */,
 				F260FC39204855A900C7941A /* Info.plist */,
 			);
 			path = FlickrClone;
+			sourceTree = "<group>";
+		};
+		F260FC4820489DBA00C7941A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F260FC41204894ED00C7941A /* Photo.swift */,
+				F260FC4320489BBD00C7941A /* Photos.swift */,
+				F260FC4520489CD500C7941A /* RecentPhotoResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F260FC492048AA2E00C7941A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F260FC4A2048AA5400C7941A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F260FC2F204855A900C7941A /* TimelineViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		F852A00DFA8064225AB1E0D8 /* Pods */ = {
@@ -219,6 +252,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F260FC4620489CD500C7941A /* RecentPhotoResponse.swift in Sources */,
+				F260FC4420489BBD00C7941A /* Photos.swift in Sources */,
+				F260FC42204894ED00C7941A /* Photo.swift in Sources */,
 				F260FC30204855A900C7941A /* TimelineViewController.swift in Sources */,
 				F260FC2E204855A900C7941A /* AppDelegate.swift in Sources */,
 			);
