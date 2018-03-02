@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import SDWebImage
 import Alamofire
 import AlamofireObjectMapper
+import DGElasticPullToRefresh
+import SimpleImageViewer
 
 class TimelineViewController: UITableViewController {
     
@@ -21,16 +24,15 @@ class TimelineViewController: UITableViewController {
         
         self.view.backgroundColor = .white
         self.title = "Flickr"
-        self.tableView.register(HeaderTableViewCell.self, forCellReuseIdentifier: headerCellId)
-        self.tableView.register(PhotoTableViewCell.self, forCellReuseIdentifier: photoCellId)
         
         fetchPhotos()
+        setUpNavigationController()
+        setUpTableView()
     }
     
     fileprivate func fetchPhotos(){
         let url = "\(baseUrl)\(flickrMethod)&api_key=\(apiKey)&per_page=20&page=1&format=json&nojsoncallback=1"
         Alamofire.request(url).responseObject { (response: DataResponse<RecentPhotoResponse>) in
-            
             let recentPhotoResponse = response.result.value
             self.photos = recentPhotoResponse?.photos?.photo
             if self.photos != nil {
@@ -38,7 +40,44 @@ class TimelineViewController: UITableViewController {
             }
         }
     }
-
+    
+    fileprivate func setUpNavigationController(){
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.barTintColor = UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+    }
+    
+    fileprivate func setUpTableView(){
+        self.tableView.register(HeaderTableViewCell.self, forCellReuseIdentifier: headerCellId)
+        self.tableView.register(PhotoTableViewCell.self, forCellReuseIdentifier: photoCellId)
+        self.tableView.separatorColor = UIColor.white
+        
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            self?.fetchPhotos()
+            self?.tableView.dg_stopLoading()
+            }, loadingView: loadingView)
+        
+        tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+    }
+    
+    deinit {
+        tableView.dg_removePullToRefresh()
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 1 {
+            let configuration = ImageViewerConfiguration { config in
+                config.imageView = photos?[indexPath.section].imageView
+            }
+            let imageViewerController = ImageViewerController(configuration: configuration)
+            present(imageViewerController, animated: true)
+        }
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         return photos?.count ?? 0
     }
@@ -48,12 +87,19 @@ class TimelineViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let photo: Photo = photos?[indexPath.section] else {
+            return UITableViewCell()
+        }
+        
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: headerCellId, for: indexPath) as! HeaderTableViewCell
+            cell.selectionStyle = .none
+            cell.isSelected = false
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: photoCellId, for: indexPath) as! PhotoTableViewCell
-        cell.backgroundColor = .blue
+        cell.postImageView.sd_setImage(with: URL(string: photo.photoUrl!), placeholderImage: UIImage(named: "placeholder"))
+        photo.imageView = cell.postImageView
         return cell
     }
     
@@ -61,7 +107,6 @@ class TimelineViewController: UITableViewController {
         if indexPath.row == 1 {
             return self.view.frame.width
         }
-        return 40
+        return 60
     }
 }
-

@@ -13,8 +13,7 @@ class PhotoTableViewCell: UITableViewCell {
     let postImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "profileImage")
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     

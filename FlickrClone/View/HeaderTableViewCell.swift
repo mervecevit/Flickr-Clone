@@ -12,7 +12,7 @@ import SnapKit
 class HeaderTableViewCell: UITableViewCell {
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.layer.cornerRadius = 12
+        imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(named: "profileImage")
@@ -58,7 +58,7 @@ class HeaderTableViewCell: UITableViewCell {
             make.left.equalToSuperview().offset(8)
             make.top.equalToSuperview().offset(8)
             make.bottom.equalToSuperview().offset(-8)
-            make.width.equalTo(24)
+            make.width.equalTo(44)
         })
     }
     func setUpNameLabel(){

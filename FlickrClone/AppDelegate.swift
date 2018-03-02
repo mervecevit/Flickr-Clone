@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         let navigationController = UINavigationController(rootViewController: TimelineViewController())
         window?.rootViewController = navigationController
+        UIApplication.shared.statusBarStyle = .lightContent
         return true
     }
 }

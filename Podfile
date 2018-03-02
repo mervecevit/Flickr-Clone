@@ -10,5 +10,8 @@ target 'FlickrClone' do
   pod 'Alamofire'
   pod 'ObjectMapper'
   pod 'AlamofireObjectMapper'
+  pod 'SDWebImage'
+  pod 'SimpleImageViewer'
+  pod 'DGElasticPullToRefresh'
 
 end

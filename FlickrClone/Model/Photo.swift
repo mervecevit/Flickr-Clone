@@ -9,15 +9,17 @@
 import ObjectMapper
 
 class Photo : Mappable {
-    var id : Int?
+    var id : String?
     var owner : String?
     var secret : String?
-    var server : Int?
+    var server : String?
     var farm : Int?
     var title : String?
     var ispublic : Int?
     var isfriend : Int?
     var isfamily : Int?
+    var photoUrl: String?
+    var imageView: UIImageView?
     
     required init?(map: Map){
     }
@@ -32,5 +34,6 @@ class Photo : Mappable {
         ispublic <- map["ispublic"]
         isfriend <- map["isfriend"]
         isfamily <- map["isfamily"]
+        photoUrl = "https://farm\(farm ?? 0).staticflickr.com/\(server ?? "")/\(id ?? "")_\(secret ?? "")_m.jpg"
     }
 }
