@@ -15,6 +15,8 @@
 		F260FC42204894ED00C7941A /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260FC41204894ED00C7941A /* Photo.swift */; };
 		F260FC4420489BBD00C7941A /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260FC4320489BBD00C7941A /* Photos.swift */; };
 		F260FC4620489CD500C7941A /* RecentPhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260FC4520489CD500C7941A /* RecentPhotoResponse.swift */; };
+		F260FC4C20495E8800C7941A /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260FC4B20495E8800C7941A /* PhotoTableViewCell.swift */; };
+		F260FC4E20495E9500C7941A /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F260FC4D20495E9500C7941A /* HeaderTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		F260FC41204894ED00C7941A /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		F260FC4320489BBD00C7941A /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		F260FC4520489CD500C7941A /* RecentPhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentPhotoResponse.swift; sourceTree = "<group>"; };
+		F260FC4B20495E8800C7941A /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
+		F260FC4D20495E9500C7941A /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 		F260FC492048AA2E00C7941A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F260FC4B20495E8800C7941A /* PhotoTableViewCell.swift */,
+				F260FC4D20495E9500C7941A /* HeaderTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -254,6 +260,8 @@
 			files = (
 				F260FC4620489CD500C7941A /* RecentPhotoResponse.swift in Sources */,
 				F260FC4420489BBD00C7941A /* Photos.swift in Sources */,
+				F260FC4C20495E8800C7941A /* PhotoTableViewCell.swift in Sources */,
+				F260FC4E20495E9500C7941A /* HeaderTableViewCell.swift in Sources */,
 				F260FC42204894ED00C7941A /* Photo.swift in Sources */,
 				F260FC30204855A900C7941A /* TimelineViewController.swift in Sources */,
 				F260FC2E204855A900C7941A /* AppDelegate.swift in Sources */,

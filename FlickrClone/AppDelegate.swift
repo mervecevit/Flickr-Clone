@@ -11,7 +11,7 @@ import SnapKit
 
 let baseUrl = "https://api.flickr.com/services/rest/?method="
 let flickrMethod = "flickr.photos.getRecent"
-let apiKey = "44dc856638867f5d04dd0450b9b1f9cf"
+let apiKey = "20c16c768dc6ab40cae02a636c7c62b0"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

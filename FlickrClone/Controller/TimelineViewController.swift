@@ -13,11 +13,16 @@ import AlamofireObjectMapper
 class TimelineViewController: UITableViewController {
     
     var photos: [Photo]?
+    let photoCellId = "photoCellId"
+    let headerCellId = "headerCellId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.backgroundColor = .white
-        self.navigationItem.title = "Flickr"
+        self.title = "Flickr"
+        self.tableView.register(HeaderTableViewCell.self, forCellReuseIdentifier: headerCellId)
+        self.tableView.register(PhotoTableViewCell.self, forCellReuseIdentifier: photoCellId)
         
         fetchPhotos()
     }
@@ -43,14 +48,12 @@ class TimelineViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-
         if indexPath.row == 0 {
-            cell.backgroundColor = .red
-        } else {
-            cell.backgroundColor = .blue
-            cell.textLabel?.text = "\(indexPath.section)"
+            let cell = tableView.dequeueReusableCell(withIdentifier: headerCellId, for: indexPath) as! HeaderTableViewCell
+            return cell
         }
+        let cell = tableView.dequeueReusableCell(withIdentifier: photoCellId, for: indexPath) as! PhotoTableViewCell
+        cell.backgroundColor = .blue
         return cell
     }
     
