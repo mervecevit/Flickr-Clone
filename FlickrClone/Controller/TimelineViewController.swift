@@ -32,7 +32,7 @@ class TimelineViewController: UITableViewController {
     }
     
     fileprivate func fetchPhotos(){
-        let url = "\(baseUrl)?api_key=\(apiKey)&per_page=20&page=1&format=json&nojsoncallback=1"
+        let url = "\(baseUrl)?api_key=\(apiKey)&format=json&nojsoncallback=1"
         let parameters = [
             "method": flickrGetRecentMethod,
             "extras": "owner_name, icon_server, date_upload",
