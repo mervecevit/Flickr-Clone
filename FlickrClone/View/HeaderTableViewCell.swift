@@ -10,12 +10,12 @@ import UIKit
 import SnapKit
 
 class HeaderTableViewCell: UITableViewCell {
+    
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "profileImage")
         return imageView
     }()
     
@@ -24,7 +24,6 @@ class HeaderTableViewCell: UITableViewCell {
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor.darkGray
-        label.text = "Merve Ecevit"
         return label
     }()
     
@@ -33,7 +32,6 @@ class HeaderTableViewCell: UITableViewCell {
         label.textAlignment = .right
         label.textColor = UIColor.darkGray
         label.font = UIFont.systemFont(ofSize: 13)
-        label.text = "3 hours ago"
         return label
     }()
     

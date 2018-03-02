@@ -12,6 +12,7 @@ import Alamofire
 import AlamofireObjectMapper
 import DGElasticPullToRefresh
 import SimpleImageViewer
+import DateToolsSwift
 
 class TimelineViewController: UITableViewController {
     
@@ -31,8 +32,14 @@ class TimelineViewController: UITableViewController {
     }
     
     fileprivate func fetchPhotos(){
-        let url = "\(baseUrl)\(flickrMethod)&api_key=\(apiKey)&per_page=20&page=1&format=json&nojsoncallback=1"
-        Alamofire.request(url).responseObject { (response: DataResponse<RecentPhotoResponse>) in
+        let url = "\(baseUrl)?api_key=\(apiKey)&per_page=20&page=1&format=json&nojsoncallback=1"
+        let parameters = [
+            "method": flickrGetRecentMethod,
+            "extras": "owner_name, icon_server, date_upload",
+            "page": "1",
+            "per_page": "20"
+        ]
+        Alamofire.request(url, parameters: parameters).responseObject { (response: DataResponse<RecentPhotoResponse>) in
             let recentPhotoResponse = response.result.value
             self.photos = recentPhotoResponse?.photos?.photo
             if self.photos != nil {
@@ -45,7 +52,7 @@ class TimelineViewController: UITableViewController {
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.barTintColor = UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0)
+        navigationController?.navigationBar.barTintColor = UIColor(red: 20/255.0, green: 20/255.0, blue: 20/255.0, alpha: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
     }
     
@@ -55,13 +62,13 @@ class TimelineViewController: UITableViewController {
         self.tableView.separatorColor = UIColor.white
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
+        loadingView.tintColor = UIColor(red: 16/255.0, green: 80/255.0, blue: 216/255.0, alpha: 1.0)
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             self?.fetchPhotos()
             self?.tableView.dg_stopLoading()
             }, loadingView: loadingView)
         
-        tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
+        tableView.dg_setPullToRefreshFillColor(UIColor(red: 20/255.0, green: 20/255.0, blue: 20/255.0, alpha: 1.0))
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
     }
     
@@ -94,7 +101,10 @@ class TimelineViewController: UITableViewController {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: headerCellId, for: indexPath) as! HeaderTableViewCell
             cell.selectionStyle = .none
-            cell.isSelected = false
+            cell.nameLabel.text = photo.ownername
+            cell.profileImageView.sd_setImage(with: URL(string: photo.ownerPhotoUrl!), placeholderImage: UIImage(named: "profileImage"))
+            let uploadDate: Date = Date(timeIntervalSince1970: Double(photo.dateupload!)!)
+            cell.timeLabel.text = uploadDate.timeAgoSinceNow
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: photoCellId, for: indexPath) as! PhotoTableViewCell

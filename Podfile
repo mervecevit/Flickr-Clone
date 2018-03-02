@@ -13,5 +13,6 @@ target 'FlickrClone' do
   pod 'SDWebImage'
   pod 'SimpleImageViewer'
   pod 'DGElasticPullToRefresh'
+  pod 'DateToolsSwift'
 
 end
