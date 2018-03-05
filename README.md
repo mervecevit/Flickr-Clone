@@ -1,6 +1,10 @@
 # Flickr-Clone [![Travis CI](https://travis-ci.org/mervecevit/Flickr-Clone.svg?branch=master)](https://travis-ci.org/mervecevit/Flickr-Clone/builds) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-<img src="/flickrclone.gif" width="360px">
+## Pull to Refresh
+<img src="/flickrclone.gif" width="360px"> 
+
+## Image with Full Screen
+<img src="/flickrclone1.gif" width="360px">
 
 ## Introduction
 Clone of the Flickr Application
